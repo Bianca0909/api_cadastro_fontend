@@ -1,4 +1,4 @@
-
+import 'package:api_cadastro/paginas/cadastro.dart';
 import 'package:api_cadastro/paginas/consulta.dart';
 import 'package:api_cadastro/paginas/home.dart';
 import 'package:api_cadastro/util/tema.dart';
@@ -23,9 +23,9 @@ class _MyAppState extends State<MyApp> {
       theme: Tema().criaTema(),
       initialRoute: '/home',
       routes: {
-        '/home':(context) => const Home(),
-        '/consulta':(context) => const Consulta()
-     
+        '/home': (context) => const Home(),
+        '/consulta': (context) => const Consulta(),
+        '/cadastro': (context) => const Cadastro()
       },
     );
   }

@@ -1,6 +1,5 @@
 import 'package:api_cadastro/api/acesso_api.dart';
 import 'package:api_cadastro/model/cidade.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 

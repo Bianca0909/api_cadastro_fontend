@@ -1,10 +1,8 @@
 import 'package:api_cadastro/api/acesso_api.dart';
 import 'package:api_cadastro/model/pessoa.dart';
 import 'package:api_cadastro/util/componentes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class Consulta extends StatefulWidget {
   const Consulta({Key? key }) : super(key: key);
