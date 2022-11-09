@@ -107,14 +107,14 @@ class Componentes {
     String sexo = p.sexo == 'M' ? "Masculino" : "Feminino";
     return ListTile(
       title: criaTexto("${p.id} - ${p.nome}"),
-      subtitle: criaTexto("${p.idade} anos - (${sexo})"),
+      subtitle: criaTexto("${p.idade} anos - ($sexo)"),
       trailing: criaTexto("${p.cidade.nome} / ${p.cidade.uf}"),
     );
   }
 
-    criaItemCidade(Cidade c) {
+  criaItemCidade(Cidade c) {
     return ListTile(
-      trailing: criaTexto("${c.nome} / ${c.uf}"),
+      title: criaTexto("${c.nome} - ${c.uf}"),
     );
   }
 }

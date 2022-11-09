@@ -26,7 +26,7 @@ class _CadastroState extends State<CadastroCliente> {
       Pessoa p = Pessoa(0, txtNome.text, txtSexo.text, int.parse(txtIdade.text),
           Cidade(int.parse(txtCidade.text), "", ""));
       AcessoApi().inserePessoa(p.toJson());
-      Navigator.of(context).pushReplacementNamed('/cadastro');
+      Navigator.of(context).pushReplacementNamed('/cadastroCliente');
 
       
     }

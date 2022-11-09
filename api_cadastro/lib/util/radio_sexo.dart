@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum sexoEnum { masculino, feminino }
@@ -34,19 +33,19 @@ class _RadioSexoState extends State<RadioSexo> {
           ),
         ),
         Expanded(
-            child: ListTile(
-          title: const Text('Feminino'),
-          leading: Radio<sexoEnum>(
-            value: sexoEnum.feminino,
-            groupValue: _escolha,
-            onChanged: (sexoEnum? value) {
-              setState(() {
-                _escolha = value;
-                widget.controller?.text = 'F';
-              });
-            },
+          child: ListTile(
+            title: const Text('Feminino'),
+            leading: Radio<sexoEnum>(
+                value: sexoEnum.feminino,
+                groupValue: _escolha,
+                onChanged: (sexoEnum? value) {
+                  setState(() {
+                    _escolha = value;
+                    widget.controller?.text = 'F';
+                  });
+                }),
           ),
-        ))
+        )
       ],
     );
   }

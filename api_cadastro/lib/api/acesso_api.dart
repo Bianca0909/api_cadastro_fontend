@@ -10,8 +10,8 @@ class AcessoApi {
     Future<List<Pessoa>> listaPessoas() async {
       String url = 'http://localhost:8080/cliente';
       Response resposta = await get(Uri.parse(url));
-      String jsonFormatadoUft8 = (utf8.decode(resposta.bodyBytes));
-      Iterable l = json.decode(jsonFormatadoUft8);
+      String jsonFormatadoUtf8 = (utf8.decode(resposta.bodyBytes));
+      Iterable l = json.decode(jsonFormatadoUtf8);
       List<Pessoa> pessoas = List<Pessoa>.from(l.map((p) => Pessoa.fromJson(p)));
       return pessoas;
     }
@@ -19,16 +19,15 @@ class AcessoApi {
     Future<List<Cidade>> listaCidades() async {
       String url = 'http://localhost:8080/cidade';
       Response resposta = await get(Uri.parse(url));
-      String jsonFormatadoUft8 = (utf8.decode(resposta.bodyBytes));
-      Iterable l = json.decode(jsonFormatadoUft8);
+      String jsonFormatadoUtf8 = (utf8.decode(resposta.bodyBytes));
+      Iterable l = json.decode(jsonFormatadoUtf8);
       List<Cidade> cidades = List<Cidade>.from(l.map((c) => Cidade.fromJson(c)));
       return cidades;
      }
 
      Future<void> inserePessoa(Map<String, dynamic> pessoa) async {
-      String url = 'http://localhost:8080/cliente';
-      Map<String, String> headers = {'Content-Type': 'application/json; charset=UFT-8'};
-
-      Response resposta = await post(Uri.parse(url), headers: headers, body: json.encode(pessoa));
+     String url = 'http://localhost:8080/cliente';
+     Map<String, String> headers = {'Content-Type': 'application/json; charset=UTF-8'};
+     await post(Uri.parse(url), headers: headers, body: json.encode(pessoa));  
      }
 }
