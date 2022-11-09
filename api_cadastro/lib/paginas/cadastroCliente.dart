@@ -6,14 +6,14 @@ import 'package:api_cadastro/util/componentes.dart';
 import 'package:api_cadastro/util/radio_sexo.dart';
 import 'package:flutter/material.dart';
 
-class Cadastro extends StatefulWidget {
-  const Cadastro({super.key});
+class CadastroCliente extends StatefulWidget {
+  const CadastroCliente({super.key});
 
   @override
-  State<Cadastro> createState() => _CadastroState();
+  State<CadastroCliente> createState() => _CadastroState();
 }
 
-class _CadastroState extends State<Cadastro> {
+class _CadastroState extends State<CadastroCliente> {
   GlobalKey<FormState> formController = GlobalKey<FormState>();
   TextEditingController txtNome = TextEditingController();
   TextEditingController txtSexo = TextEditingController();
@@ -27,6 +27,8 @@ class _CadastroState extends State<Cadastro> {
           Cidade(int.parse(txtCidade.text), "", ""));
       AcessoApi().inserePessoa(p.toJson());
       Navigator.of(context).pushReplacementNamed('/cadastro');
+
+      
     }
 
     home() {

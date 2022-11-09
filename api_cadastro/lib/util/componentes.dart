@@ -1,3 +1,4 @@
+import 'package:api_cadastro/model/cidade.dart';
 import 'package:api_cadastro/model/pessoa.dart';
 import 'package:flutter/material.dart';
 
@@ -108,6 +109,12 @@ class Componentes {
       title: criaTexto("${p.id} - ${p.nome}"),
       subtitle: criaTexto("${p.idade} anos - (${sexo})"),
       trailing: criaTexto("${p.cidade.nome} / ${p.cidade.uf}"),
+    );
+  }
+
+    criaItemCidade(Cidade c) {
+    return ListTile(
+      trailing: criaTexto("${c.nome} / ${c.uf}"),
     );
   }
 }

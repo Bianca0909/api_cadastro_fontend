@@ -17,13 +17,22 @@ class _HomeState extends State<Home> {
       Navigator.of(context).pushReplacementNamed('/home');
     }
 
-    cadastro() {
-      Navigator.of(context).pushReplacementNamed('/cadastro');
+    cadastroCliente() {
+      Navigator.of(context).pushReplacementNamed('/cadastroCliente');
     }
 
-    consulta() {
-      Navigator.of(context).pushReplacementNamed('/consulta');
+    consultaCliente() {
+      Navigator.of(context).pushReplacementNamed('/consultaCliente');
     }
+
+     cadastroCidade() {
+      Navigator.of(context).pushReplacementNamed('/cadastroCidade');
+    }
+
+    consultaCidade() {
+      Navigator.of(context).pushReplacementNamed('/consultaCidade');
+    }
+
 
     return Scaffold(
       appBar: Componentes().criaAppBar("Utilização API", home),
@@ -31,8 +40,10 @@ class _HomeState extends State<Home> {
         key: formController,
         child: Column(
           children: [
-            Componentes().criaBotao(formController, cadastro, "Cadastro Pessoa"),
-            Componentes().criaBotao(formController, consulta, "Consulta Pessoa")
+            Componentes().criaBotao(formController, cadastroCliente, "Cadastro Pessoa"),
+            Componentes().criaBotao(formController, consultaCliente, "Consulta Pessoa"),
+            Componentes().criaBotao(formController, consultaCidade, "Consulta Cidade"),
+            Componentes().criaBotao(formController, cadastroCidade, "Cadastro Cidade")
           ],
         )),
 

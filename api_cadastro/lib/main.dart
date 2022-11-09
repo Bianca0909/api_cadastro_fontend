@@ -1,5 +1,5 @@
-import 'package:api_cadastro/paginas/cadastro.dart';
-import 'package:api_cadastro/paginas/consulta.dart';
+import 'package:api_cadastro/paginas/cadastroCliente.dart';
+import 'package:api_cadastro/paginas/consultaCliente.dart';
 import 'package:api_cadastro/paginas/home.dart';
 import 'package:api_cadastro/util/tema.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +24,9 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/home',
       routes: {
         '/home': (context) => const Home(),
-        '/consulta': (context) => const Consulta(),
-        '/cadastro': (context) => const Cadastro()
+        '/consultaCliente': (context) => const ConsultaCliente(),
+        '/cadastroCliente': (context) => const CadastroCliente(),
+        '/consultaCidade':(context) => const ConsultaCliente()
       },
     );
   }

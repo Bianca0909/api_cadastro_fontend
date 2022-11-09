@@ -4,14 +4,14 @@ import 'package:api_cadastro/util/componentes.dart';
 import 'package:flutter/material.dart';
 
 
-class Consulta extends StatefulWidget {
-  const Consulta({Key? key }) : super(key: key);
+class ConsultaCliente extends StatefulWidget {
+  const ConsultaCliente({Key? key }) : super(key: key);
 
   @override
-  State<Consulta> createState() => _ConsultaState();
+  State<ConsultaCliente> createState() => _ConsultaState();
 }
 
-class _ConsultaState extends State<Consulta> {
+class _ConsultaState extends State<ConsultaCliente> {
   GlobalKey<FormState> formController = GlobalKey<FormState>();
   List<Pessoa> lista = [];
 
@@ -26,6 +26,7 @@ class _ConsultaState extends State<Consulta> {
       setState(() {
         lista = pessoas;
       });
+      
     }
     return Scaffold(
       appBar: Componentes().criaAppBar("Utilização API", home),
