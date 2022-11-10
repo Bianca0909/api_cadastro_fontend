@@ -26,7 +26,7 @@ class Componentes {
     return Text(texto);
   }
 
-  iconeGrande() {
+  iconButton() {
     return const Icon(
       Icons.maps_home_work_outlined,
       size: 180.0,
@@ -65,9 +65,7 @@ class Componentes {
             padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
             height: 70,
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black
-              ),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
               onPressed: () {
                 if (controladorFormulario.currentState!.validate()) {
                   funcao();
@@ -85,30 +83,40 @@ class Componentes {
   }
 
   criaContainerDados(rua, complemento, bairro, cidade, estado) {
-      return Container(
-        padding: const EdgeInsets.all(10),
-        height: 250,
-        width: double.infinity,
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [],
-          ),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      height: 250,
+      width: double.infinity,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
-      );
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [],
+        ),
+      ),
+    );
   }
 
-  criaItemPessoa(Pessoa p) {
+  criaIconButtonEditar(acao) {
+    return IconButton(onPressed: acao, icon: Icon(Icons.edit));
+  }
+
+  criaIconButtonExcluir(acao) {
+    return IconButton(onPressed: acao, icon: Icon(Icons.delete));
+  }
+
+  criaItemPessoa(Pessoa p, acaoEditar, acaoExcluir) {
     String sexo = p.sexo == 'M' ? "Masculino" : "Feminino";
+
     return ListTile(
       title: criaTexto("${p.id} - ${p.nome}"),
-      subtitle: criaTexto("${p.idade} anos - ($sexo)"),
-      trailing: criaTexto("${p.cidade.nome} / ${p.cidade.uf}"),
+      subtitle: criaTexto("${p.idade} anos - ($sexo) - ${p.cidade.nome} / ${p.cidade.uf}"),
+      trailing: criaIconButtonExcluir(acaoExcluir),
+      leading: criaIconButtonEditar(acaoEditar),
     );
   }
 

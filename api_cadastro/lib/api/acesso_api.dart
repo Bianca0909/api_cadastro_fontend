@@ -30,4 +30,8 @@ class AcessoApi {
      Map<String, String> headers = {'Content-Type': 'application/json; charset=UTF-8'};
      await post(Uri.parse(url), headers: headers, body: json.encode(pessoa));  
      }
+
+    
+    
+
 }
