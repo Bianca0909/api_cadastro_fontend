@@ -7,7 +7,7 @@ Trabalho de finalização do curso DEVTISUL - Módulo III (Desenvolvimento Web)
 
 - Tarefas: 
  - Cadastrar cidade: <span style='font-size:100px;'>&#10060;</span>
- - Listar cidade: <span style='font-size:100px;'>&#10060;</span>
+ - Listar cidade: <span style='font-size:100px;'>&#9989;</span>
  - Excluir cidade: <span style='font-size:100px;'>&#10060;</span>
  - Editar cidade: <span style='font-size:100px;'>&#10060;</span>
 
