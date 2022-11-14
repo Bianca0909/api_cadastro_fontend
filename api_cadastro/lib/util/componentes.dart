@@ -1,5 +1,4 @@
 import 'package:api_cadastro/model/cidade.dart';
-import 'package:api_cadastro/model/pessoa.dart';
 import 'package:flutter/material.dart';
 
 class Componentes {
@@ -98,25 +97,6 @@ class Componentes {
           children: [],
         ),
       ),
-    );
-  }
-
-  criaIconButtonEditar(acao) {
-    return IconButton(onPressed: acao, icon: Icon(Icons.edit));
-  }
-
-  criaIconButtonExcluir(acao) {
-    return IconButton(onPressed: acao, icon: Icon(Icons.delete));
-  }
-
-  criaItemPessoa(Pessoa p, acaoEditar, acaoExcluir) {
-    String sexo = p.sexo == 'M' ? "Masculino" : "Feminino";
-
-    return ListTile(
-      title: criaTexto("${p.id} - ${p.nome}"),
-      subtitle: criaTexto("${p.idade} anos - ($sexo) - ${p.cidade.nome} / ${p.cidade.uf}"),
-      trailing: criaIconButtonExcluir(acaoExcluir),
-      leading: criaIconButtonEditar(acaoEditar),
     );
   }
 

@@ -16,15 +16,51 @@ class _ConsultaState extends State<ConsultaCliente> {
 
   @override
   Widget build(BuildContext context) {
-    home() {
-      Navigator.of(context).pushReplacementNamed('/home');
-    }
-
     listarTodas() async {
       List<Pessoa> pessoas = await AcessoApi().listaPessoas();
       setState(() {
         lista = pessoas;
       });
+    }
+
+    @override
+    void initState() {
+      listarTodas();
+      super.initState();
+    }
+
+    criaItemPessoa(Pessoa p, context) {
+      return ListTile(
+        title: Text('${p.id} - ${p.nome}'),
+        subtitle: Text('${p.sexo} (${p.cidade.nome}/${p.cidade.uf})'),
+        trailing: FittedBox(
+          fit: BoxFit.fill,
+          child: Row(
+            children: [
+              IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/cadastroCliente",
+                        arguments: p);
+                  }),
+              IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () async {
+                    await AcessoApi().excluiPessoa(p.id);
+                    listarTodas();
+                  }),
+            ],
+          ),
+        ),
+      );
+    }
+
+    home() {
+      Navigator.of(context).pushReplacementNamed('/home');
+    }
+
+    deletar() async {
+      Navigator.of(context).pushReplacementNamed('/consultaCliente');
     }
 
     return Scaffold(
@@ -43,7 +79,7 @@ class _ConsultaState extends State<ConsultaCliente> {
                     return Card(
                       elevation: 6,
                       margin: const EdgeInsets.all(5),
-                      child: Componentes().criaItemPessoa(lista[indice], home, home),
+                      child: criaItemPessoa(lista[indice], context),
                     );
                   }),
             ))

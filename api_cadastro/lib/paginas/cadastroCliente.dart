@@ -22,13 +22,21 @@ class _CadastroState extends State<CadastroCliente> {
 
   @override
   Widget build(BuildContext context) {
-    cadastrar() {
-      Pessoa p = Pessoa(0, txtNome.text, txtSexo.text, int.parse(txtIdade.text),
-          Cidade(int.parse(txtCidade.text), "", ""));
-      AcessoApi().inserePessoa(p.toJson());
-      Navigator.of(context).pushReplacementNamed('/cadastroCliente');
-
-      
+ final args = ModalRoute.of(context)?.settings.arguments as Pessoa;
+    txtNome.text = args.nome;
+    txtSexo.text = args.sexo;
+    txtIdade.text = args.idade.toString();
+    txtCidade.text = args.cidade.toString();
+ 
+    salvar() async {
+      Pessoa p =
+          Pessoa(args.id, txtNome.text, txtSexo.text, args.idade.toInt(), Cidade.fromJson(txtCidade.text));
+      if (p.id == 0) {
+        await AcessoApi().inserePessoa(p.toJson());
+      } else {
+        await AcessoApi().alteraPessoa(p.toJson(), p.id);
+      }
+      Navigator.of(context).pushNamed('/listagem');
     }
 
     home() {
@@ -47,7 +55,7 @@ class _CadastroState extends State<CadastroCliente> {
                 TextInputType.number, "Idade", txtIdade, "informe o idade"),
             Center(child: RadioSexo(controller: txtSexo)),
             Center(child: ComboCidade(controller: txtCidade)),
-            Componentes().criaBotao(formController, cadastrar, "Cadastrar")
+            Componentes().criaBotao(formController, salvar, "Cadastrar")
           ],
         ),
       ),
