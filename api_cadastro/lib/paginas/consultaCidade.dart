@@ -1,23 +1,26 @@
 import 'package:api_cadastro/api/acesso_api.dart';
-import 'package:api_cadastro/model/pessoa.dart';
+import 'package:api_cadastro/model/cidade.dart';
 import 'package:api_cadastro/util/componentes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
-class ConsultaCliente extends StatefulWidget {
-  const ConsultaCliente({Key? key}) : super(key: key);
+class consultaCidade extends StatefulWidget {
+  const consultaCidade({super.key});
 
   @override
-  State<ConsultaCliente> createState() => _ConsultaState();
+  State<consultaCidade> createState() => _consultaCidadeState();
 }
 
-class _ConsultaState extends State<ConsultaCliente> {
+class _consultaCidadeState extends State<consultaCidade> {
   GlobalKey<FormState> formController = GlobalKey<FormState>();
-  List<Pessoa> lista = [];
+  List<Cidade> lista = [];
 
   @override
   Widget build(BuildContext context) {
     listarTodas() async {
-      List<Pessoa> pessoas = await AcessoApi().listaPessoas();
+      List<Cidade> pessoas = await AcessoApi().listaCidades();
       setState(() {
         lista = pessoas;
       });
@@ -29,10 +32,9 @@ class _ConsultaState extends State<ConsultaCliente> {
       super.initState();
     }
 
-    criaItemPessoa(Pessoa p, context) {
+    criaItemPessoa(Cidade c, context) {
       return ListTile(
-        title: Text('${p.id} - ${p.nome}'),
-        subtitle: Text('${p.sexo} (${p.cidade.nome}/${p.cidade.uf})'),
+        title: Text('${c.id} - ${c.nome}/${c.uf}'),
         trailing: FittedBox(
           fit: BoxFit.fill,
           child: Row(
@@ -40,13 +42,13 @@ class _ConsultaState extends State<ConsultaCliente> {
               IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () {
-                    Navigator.pushNamed(context, "/cadastroCliente",
-                        arguments: p);
+                    Navigator.pushNamed(context, "/consultaCidade",
+                        arguments: c);
                   }),
               IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () async {
-                    await AcessoApi().excluiPessoa(p.id);
+                    await AcessoApi().excluiCidade(c.id);
                     listarTodas();
                   }),
             ],

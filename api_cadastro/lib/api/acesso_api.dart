@@ -44,4 +44,25 @@ class AcessoApi {
     List<Cidade> cidades = List<Cidade>.from(l.map((c) => Cidade.fromJson(c)));
     return cidades;
   }
+
+  Future<void> insereCidade(Map<String, dynamic> cidade) async {
+    String url = 'http://localhost:8080/cidade';
+    Map<String, String> headers = {
+      'Content-Type': 'application/json; charset=UTF-8'
+    };
+    await post(Uri.parse(url), headers: headers, body: json.encode(cidade));
+  }
+
+  Future<void> alteraCidade(Map<String, dynamic> cidade, int id) async {
+    String url = "http://localhost:8080/cidade/$id";
+    Map<String, String> headers = {
+      "Content-Type": "application/json; charset=UTF-8"
+    };
+    await put(Uri.parse(url), headers: headers, body: jsonEncode(cidade));
+  }
+
+   Future<void> excluiCidade(int id) async {
+    String url = "http://localhost:8080/cidade/$id";
+    await delete(Uri.parse(url));
+  }
 }

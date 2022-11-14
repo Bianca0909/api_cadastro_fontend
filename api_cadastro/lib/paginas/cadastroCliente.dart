@@ -30,7 +30,7 @@ class _CadastroState extends State<CadastroCliente> {
  
     salvar() async {
       Pessoa p =
-          Pessoa(args.id, txtNome.text, txtSexo.text, args.idade.toInt(), Cidade.fromJson(txtCidade.text));
+          Pessoa(args.id, txtNome.text, txtSexo.text, int.parse(txtIdade.text), Cidade.fromJson(txtCidade.text));
       if (p.id == 0) {
         await AcessoApi().inserePessoa(p.toJson());
       } else {

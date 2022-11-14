@@ -1,4 +1,6 @@
+import 'package:api_cadastro/paginas/cadastroCidade.dart';
 import 'package:api_cadastro/paginas/cadastroCliente.dart';
+import 'package:api_cadastro/paginas/consultaCidade.dart';
 import 'package:api_cadastro/paginas/consultaCliente.dart';
 import 'package:api_cadastro/paginas/home.dart';
 import 'package:api_cadastro/util/tema.dart';
@@ -26,7 +28,8 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => const Home(),
         '/consultaCliente': (context) => const ConsultaCliente(),
         '/cadastroCliente': (context) => const CadastroCliente(),
-        '/consultaCidade':(context) => const ConsultaCliente()
+        '/consultaCidade': (context) => const consultaCidade(),
+        '/cadastroCidade': (context) => const CadastroCidade()
       },
     );
   }
