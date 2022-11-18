@@ -32,7 +32,7 @@ class _ConsultaState extends State<ConsultaCliente> {
     criaItemPessoa(Pessoa p, context) {
       return ListTile(
         title: Text('${p.id} - ${p.nome}'),
-        subtitle: Text('${p.sexo} (${p.cidade.nome}/${p.cidade.uf})'),
+        subtitle: Text('${p.sexo} - (${p.cidade.nome}/${p.cidade.uf})'),
         trailing: FittedBox(
           fit: BoxFit.fill,
           child: Row(

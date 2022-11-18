@@ -1,3 +1,5 @@
+import 'package:api_cadastro/model/cidade.dart';
+import 'package:api_cadastro/model/pessoa.dart';
 import 'package:api_cadastro/util/componentes.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,10 @@ class _HomeState extends State<Home> {
     }
 
     cadastroCliente() {
-      Navigator.of(context).pushReplacementNamed('/cadastroCliente');
+      Navigator.pushNamed(
+        context,
+        '/cadastroCliente',
+        arguments: Pessoa(0,"", "", 0, Cidade(0, "", "")),);
     }
 
     consultaCliente() {
@@ -26,7 +31,10 @@ class _HomeState extends State<Home> {
     }
 
      cadastroCidade() {
-      Navigator.of(context).pushReplacementNamed('/cadastroCidade');
+     Navigator.pushNamed(
+        context,
+        '/cadastroCidade',
+        arguments: Cidade(0, "", ""));
     }
 
     consultaCidade() {

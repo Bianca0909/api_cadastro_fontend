@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => const Home(),
         '/consultaCliente': (context) => const ConsultaCliente(),
         '/cadastroCliente': (context) => const CadastroCliente(),
-        '/consultaCidade': (context) => const consultaCidade(),
+        '/consultaCidade': (context) => const ConsultaCidade(),
         '/cadastroCidade': (context) => const CadastroCidade()
       },
     );

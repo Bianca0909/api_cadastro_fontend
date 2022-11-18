@@ -20,7 +20,7 @@ class _CadastroCidadeState extends State<CadastroCidade> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as Cidade;
+    final args = ModalRoute.of(context)!.settings.arguments as Cidade;
     txtNome.text = args.nome;
     txtUf.text = args.uf;
 
@@ -29,9 +29,9 @@ class _CadastroCidadeState extends State<CadastroCidade> {
       if (c.id == 0) {
         await AcessoApi().insereCidade(c.toJson());
       } else {
-        await AcessoApi().alteraCidade(c.toJson(), c.id);
+      AcessoApi().alteraCidade(c.toJson(), c.id);
       }
-      Navigator.of(context).pushNamed('/listagem');
+      Navigator.of(context).pushNamed('/consultaCidade');
     }
 
     home() {

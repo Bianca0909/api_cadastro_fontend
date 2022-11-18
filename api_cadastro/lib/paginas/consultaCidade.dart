@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class consultaCidade extends StatefulWidget {
-  const consultaCidade({super.key});
+class ConsultaCidade extends StatefulWidget {
+  const ConsultaCidade({super.key});
 
   @override
-  State<consultaCidade> createState() => _consultaCidadeState();
+  State<ConsultaCidade> createState() => _ConsultaCidadeState();
 }
 
-class _consultaCidadeState extends State<consultaCidade> {
+class _ConsultaCidadeState extends State<ConsultaCidade> {
   GlobalKey<FormState> formController = GlobalKey<FormState>();
   List<Cidade> lista = [];
 
@@ -42,7 +42,7 @@ class _consultaCidadeState extends State<consultaCidade> {
               IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () {
-                    Navigator.pushNamed(context, "/consultaCidade",
+                    Navigator.pushNamed(context, "/cadastroCidade",
                         arguments: c);
                   }),
               IconButton(
@@ -78,6 +78,7 @@ class _consultaCidadeState extends State<consultaCidade> {
                       elevation: 6,
                       margin: const EdgeInsets.all(5),
                       child: criaItemPessoa(lista[indice], context),
+                      
                     );
                   }),
             ))
