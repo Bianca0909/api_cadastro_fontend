@@ -61,8 +61,16 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
       Navigator.of(context).pushReplacementNamed('/home');
     }
 
+      
+    buscarPorUf(String uf) async {
+      List<Cidade> pessoas = await AcessoApi().listaCidadesPorUf(uf);
+      setState(() {
+        lista = pessoas;
+      });
+    }
+
     return Scaffold(
-      appBar: Componentes().criaAppBar("Utilização API", home),
+      appBar: Componentes().criaAppBarPesquisa("", buscarPorUf),
       body: Form(
         key: formController,
         child: Column(
@@ -78,7 +86,6 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
                       elevation: 6,
                       margin: const EdgeInsets.all(5),
                       child: criaItemPessoa(lista[indice], context),
-                      
                     );
                   }),
             ))

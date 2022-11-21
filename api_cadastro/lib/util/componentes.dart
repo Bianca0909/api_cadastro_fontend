@@ -15,6 +15,16 @@ class Componentes {
     );
   }
 
+criaAppBarPesquisa(texto, acao) {
+  return AppBar(
+    title: criaTexto(texto),
+    actions: <Widget>[
+      IconButton(
+        icon: const Icon(Icons.search),
+        onPressed: acao)
+    ],
+  );
+}
   criaTexto(texto, [cor]) {
     if (cor != null) {
       return Text(

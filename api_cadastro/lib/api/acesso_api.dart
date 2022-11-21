@@ -36,6 +36,14 @@ class AcessoApi {
     await delete(Uri.parse(url));
   }
 
+ Future<List<Pessoa>> listaPessoasPorCidade(Cidade cidade) async {
+    String url = 'localhost:8080/cliente/buscar-por-cidade/$cidade';
+    Response resposta = await get(Uri.parse(url));
+    String jsonFormatadoUtf8 = (utf8.decode(resposta.bodyBytes));
+    Iterable l = json.decode(jsonFormatadoUtf8);
+    List<Pessoa> pessoas = List<Pessoa>.from(l.map((p) => Pessoa.fromJson(p)));
+    return pessoas;
+  }
    Future<List<Cidade>> listaCidades() async {
     String url = 'http://localhost:8080/cidade';
     Response resposta = await get(Uri.parse(url));
@@ -65,4 +73,14 @@ class AcessoApi {
     String url = "http://localhost:8080/cidade/$id";
     await delete(Uri.parse(url));
   }
+
+ Future<List<Cidade>> listaCidadesPorUf(String uf) async {
+    String url = 'http://localhost:8080/cidade/$uf';
+    Response resposta = await get(Uri.parse(url));
+    String jsonFormatadoUtf8 = (utf8.decode(resposta.bodyBytes));
+    Iterable l = json.decode(jsonFormatadoUtf8);
+    List<Cidade> cidades = List<Cidade>.from(l.map((c) => Cidade.fromJson(c)));
+    return cidades;
+  }
+
 }

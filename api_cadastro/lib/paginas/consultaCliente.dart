@@ -1,4 +1,5 @@
 import 'package:api_cadastro/api/acesso_api.dart';
+import 'package:api_cadastro/model/cidade.dart';
 import 'package:api_cadastro/model/pessoa.dart';
 import 'package:api_cadastro/util/componentes.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,10 @@ class _ConsultaState extends State<ConsultaCliente> {
     }
 
     criaItemPessoa(Pessoa p, context) {
+      String sexo = p.sexo == 'M'? "Masculino" : "Feminino";
       return ListTile(
         title: Text('${p.id} - ${p.nome}'),
-        subtitle: Text('${p.sexo} - (${p.cidade.nome}/${p.cidade.uf})'),
+        subtitle: Text('${sexo} - (${p.cidade.nome}/${p.cidade.uf})'),
         trailing: FittedBox(
           fit: BoxFit.fill,
           child: Row(
@@ -58,9 +60,16 @@ class _ConsultaState extends State<ConsultaCliente> {
     home() {
       Navigator.of(context).pushReplacementNamed('/home');
     }
+    
+    buscarPorCidade(Cidade cidade) async {
+      List<Pessoa> pessoas = await AcessoApi().listaPessoasPorCidade(cidade);
+      setState(() {
+        lista = pessoas;
+      });
+    }
 
     return Scaffold(
-      appBar: Componentes().criaAppBar("Utilização API", home),
+      appBar: Componentes().criaAppBarPesquisa('', buscarPorCidade),
       body: Form(
         key: formController,
         child: Column(
