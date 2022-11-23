@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
 
 
     return Scaffold(
-      appBar: Componentes().criaAppBar("Utilização API", home),
+      // appBar: Componentes().criaAppBar("Utilização API", home),
       body: Form(
         key: formController,
         child: Column(

@@ -69,7 +69,7 @@ class _ConsultaState extends State<ConsultaCliente> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBarPesquisa('', buscarPorCidade),
+      appBar: Componentes().criaAppBarPesquisa(),
       body: Form(
         key: formController,
         child: Column(

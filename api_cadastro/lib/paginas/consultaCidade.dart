@@ -19,6 +19,8 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
 
   @override
   Widget build(BuildContext context) {
+  Cidade? _cidades;
+
     listarTodas() async {
       List<Cidade> pessoas = await AcessoApi().listaCidades();
       setState(() {
@@ -32,7 +34,7 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
       super.initState();
     }
 
-    criaItemPessoa(Cidade c, context) {
+    criaItemCidade(Cidade c, context) {
       return ListTile(
         title: Text('${c.id} - ${c.nome}/${c.uf}'),
         trailing: FittedBox(
@@ -57,6 +59,7 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
       );
     }
 
+
     home() {
       Navigator.of(context).pushReplacementNamed('/home');
     }
@@ -70,7 +73,7 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBarPesquisa("", buscarPorUf),
+      appBar: Componentes().criaAppBarPesquisa(),
       body: Form(
         key: formController,
         child: Column(
@@ -85,7 +88,7 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
                     return Card(
                       elevation: 6,
                       margin: const EdgeInsets.all(5),
-                      child: criaItemPessoa(lista[indice], context),
+                      child: criaItemCidade(lista[indice], context),
                     );
                   }),
             ))

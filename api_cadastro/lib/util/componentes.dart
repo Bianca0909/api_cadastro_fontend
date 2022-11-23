@@ -15,16 +15,26 @@ class Componentes {
     );
   }
 
-criaAppBarPesquisa(texto, acao) {
-  return AppBar(
-    title: criaTexto(texto),
-    actions: <Widget>[
-      IconButton(
-        icon: const Icon(Icons.search),
-        onPressed: acao)
-    ],
-  );
-}
+  criaAppBarPesquisa() {
+    return AppBar(
+            title: Container(
+                width: double.infinity,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search, color: Colors.black),
+                        suffixIcon: IconButton(
+                            icon: const Icon(Icons.clear, color: Colors.black), onPressed: (() {})),
+                        hintText: 'Pesquisar...',
+                        border: InputBorder.none),
+                  ),
+                )));
+  }
+
   criaTexto(texto, [cor]) {
     if (cor != null) {
       return Text(

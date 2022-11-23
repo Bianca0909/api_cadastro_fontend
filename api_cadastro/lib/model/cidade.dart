@@ -12,4 +12,5 @@ class Cidade {
 
   Map<String, dynamic> toJson() => // Mapeamento para Json
       {if (id != 0) 'id': id, 'nome': nome, 'uf': uf};
+
 }
