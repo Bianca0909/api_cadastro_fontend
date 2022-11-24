@@ -4,6 +4,8 @@ import 'package:api_cadastro/model/pessoa.dart';
 import 'package:api_cadastro/util/componentes.dart';
 import 'package:flutter/material.dart';
 
+import '../util/combo_cidade.dart';
+
 class ConsultaCliente extends StatefulWidget {
   const ConsultaCliente({Key? key}) : super(key: key);
 
@@ -13,6 +15,8 @@ class ConsultaCliente extends StatefulWidget {
 
 class _ConsultaState extends State<ConsultaCliente> {
   GlobalKey<FormState> formController = GlobalKey<FormState>();
+  TextEditingController txtCidade = TextEditingController();
+  
   List<Pessoa> lista = [];
 
   @override
@@ -69,13 +73,13 @@ class _ConsultaState extends State<ConsultaCliente> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBarPesquisa(),
       body: Form(
         key: formController,
         child: Column(
           children: [
-            Componentes()
-                .criaBotao(formController, listarTodas, "Listar todas"),
+             Center(child: ComboCidade(controller: txtCidade)),
+            Componentes().criaBotao(formController, buscarPorCidade, "Buscar por cidade"),
+            Componentes().criaBotao(formController, listarTodas, "Listar todas"),
             Expanded(
                 child: Container(
               child: ListView.builder(

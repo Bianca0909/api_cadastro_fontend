@@ -37,7 +37,7 @@ class AcessoApi {
   }
 
  Future<List<Pessoa>> listaPessoasPorCidade(Cidade cidade) async {
-    String url = 'localhost:8080/cliente/buscar-por-cidade/$cidade';
+    String url = 'localhost:8080/cliente/buscar-por-cidade/${cidade.id}';
     Response resposta = await get(Uri.parse(url));
     String jsonFormatadoUtf8 = (utf8.decode(resposta.bodyBytes));
     Iterable l = json.decode(jsonFormatadoUtf8);
@@ -75,7 +75,7 @@ class AcessoApi {
   }
 
  Future<List<Cidade>> listaCidadesPorUf(String uf) async {
-    String url = 'http://localhost:8080/cidade/$uf';
+    String url = 'http://localhost:8080/cidade/buscar-por-uf/$uf';
     Response resposta = await get(Uri.parse(url));
     String jsonFormatadoUtf8 = (utf8.decode(resposta.bodyBytes));
     Iterable l = json.decode(jsonFormatadoUtf8);

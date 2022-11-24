@@ -16,10 +16,12 @@ class ConsultaCidade extends StatefulWidget {
 class _ConsultaCidadeState extends State<ConsultaCidade> {
   GlobalKey<FormState> formController = GlobalKey<FormState>();
   List<Cidade> lista = [];
+  TextEditingController txtUf = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
-  Cidade? _cidades;
+  Cidade? cidade;
 
     listarTodas() async {
       List<Cidade> pessoas = await AcessoApi().listaCidades();
@@ -64,23 +66,22 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
       Navigator.of(context).pushReplacementNamed('/home');
     }
 
-      
     buscarPorUf(String uf) async {
-      List<Cidade> pessoas = await AcessoApi().listaCidadesPorUf(uf);
+      List<Cidade> cidades = await AcessoApi().listaCidadesPorUf(uf);
       setState(() {
-        lista = pessoas;
+        lista = cidades;
       });
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBarPesquisa(),
       body: Form(
         key: formController,
         child: Column(
           children: [
-            Componentes()
-                .criaBotao(formController, listarTodas, "Listar todas"),
-            Expanded(
+            Componentes().criaInputTexto(TextInputType.text, "UF", txtUf, "Informe a UF"),
+            Componentes().criaBotao(formController, buscarPorUf, "Buscar por UF"),
+            Componentes().criaBotao(formController, listarTodas, "Listar todas"),
+              Expanded(
                 child: Container(
               child: ListView.builder(
                   itemCount: lista.length,
@@ -92,6 +93,7 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
                     );
                   }),
             ))
+          
           ],
         ),
       ),

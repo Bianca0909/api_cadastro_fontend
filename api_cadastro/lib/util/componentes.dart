@@ -1,5 +1,6 @@
 import 'package:api_cadastro/model/cidade.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Componentes {
   criaAppBar(texto, acao) {
@@ -15,25 +16,19 @@ class Componentes {
     );
   }
 
-  criaAppBarPesquisa() {
-    return AppBar(
-            title: Container(
-                width: double.infinity,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5)),
-                child: Center(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search, color: Colors.black),
-                        suffixIcon: IconButton(
-                            icon: const Icon(Icons.clear, color: Colors.black), onPressed: (() {})),
-                        hintText: 'Pesquisar...',
-                        border: InputBorder.none),
-                  ),
-                )));
-  }
+  // criaAppBarPesquisa(acao) {
+  //   return AppBar(
+  //       title: Container(
+  //           width: double.infinity,
+  //           height: 40,
+  //           decoration: BoxDecoration(
+  //               color: Color.fromARGB(255, 0, 0, 0),
+  //               borderRadius: BorderRadius.circular(5)),
+  //           child: Center(
+  //             child: TextInput(
+  //             ),
+  //           )));
+  // }
 
   criaTexto(texto, [cor]) {
     if (cor != null) {
