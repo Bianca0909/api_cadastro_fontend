@@ -44,7 +44,7 @@ class _CadastroState extends State<CadastroCliente> {
     }
 
     return Scaffold(
-      // appBar: Componentes().criaAppBarPesquisa("Utilização API", home),
+      appBar: Componentes().criaAppBar("Cadastro de clientes", home),
       body: Form(
         key: formController,
         child: Column(

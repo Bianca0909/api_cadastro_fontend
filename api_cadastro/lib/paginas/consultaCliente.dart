@@ -65,14 +65,16 @@ class _ConsultaState extends State<ConsultaCliente> {
       Navigator.of(context).pushReplacementNamed('/home');
     }
     
-    buscarPorCidade(Cidade cidade) async {
-      List<Pessoa> pessoas = await AcessoApi().listaPessoasPorCidade(cidade);
+    buscarPorCidade() async {
+
+      List<Pessoa> pessoas = await AcessoApi().listaPessoasPorCidade(int.parse(txtCidade.text));
       setState(() {
         lista = pessoas;
       });
     }
 
     return Scaffold(
+      appBar: Componentes().criaAppBar("Consulta de clientes", home),
       body: Form(
         key: formController,
         child: Column(

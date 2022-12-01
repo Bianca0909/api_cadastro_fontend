@@ -39,7 +39,7 @@ class _CadastroCidadeState extends State<CadastroCidade> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBar("Utilização API", home),
+      appBar: Componentes().criaAppBar("Cadastro de cidades", home),
       body: Form(
         key: formController,
         child: Column(

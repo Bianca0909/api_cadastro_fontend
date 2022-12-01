@@ -66,14 +66,15 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
       Navigator.of(context).pushReplacementNamed('/home');
     }
 
-    buscarPorUf(String uf) async {
-      List<Cidade> cidades = await AcessoApi().listaCidadesPorUf(uf);
+    buscarPorUf() async {
+      List<Cidade> cidades = await AcessoApi().listaCidadesPorUf(txtUf.text);
       setState(() {
         lista = cidades;
       });
     }
 
     return Scaffold(
+      appBar: Componentes().criaAppBar("Consulta de cidades", home),
       body: Form(
         key: formController,
         child: Column(
