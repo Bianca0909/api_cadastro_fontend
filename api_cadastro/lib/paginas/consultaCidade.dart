@@ -21,7 +21,6 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
 
   @override
   Widget build(BuildContext context) {
-  Cidade? cidade;
 
     listarTodas() async {
       List<Cidade> pessoas = await AcessoApi().listaCidades();
@@ -74,14 +73,14 @@ class _ConsultaCidadeState extends State<ConsultaCidade> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBar("Consulta de cidades", home),
+      appBar: Componentes().criaAppBar("Consulta de cidades", home, Colors.purple),
       body: Form(
         key: formController,
         child: Column(
           children: [
             Componentes().criaInputTexto(TextInputType.text, "UF", txtUf, "Informe a UF"),
             Componentes().criaBotao(formController, buscarPorUf, "Buscar por UF"),
-            Componentes().criaBotao(formController, listarTodas, "Listar todas"),
+            Componentes().criaBotaoSemValidacao(listarTodas, "Listar todas"),
               Expanded(
                 child: Container(
               child: ListView.builder(

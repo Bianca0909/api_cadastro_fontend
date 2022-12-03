@@ -29,7 +29,7 @@ class _CadastroCidadeState extends State<CadastroCidade> {
       if (c.id == 0) {
         await AcessoApi().insereCidade(c.toJson());
       } else {
-      AcessoApi().alteraCidade(c.toJson(), c.id);
+       AcessoApi().alteraCidade(c.toJson(), c.id);
       }
       Navigator.of(context).pushNamed('/consultaCidade');
     }
@@ -39,7 +39,7 @@ class _CadastroCidadeState extends State<CadastroCidade> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBar("Cadastro de cidades", home),
+      appBar: Componentes().criaAppBar("Cadastro de cidades", home, Colors.purple),
       body: Form(
         key: formController,
         child: Column(

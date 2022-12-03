@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
     }
 
     consultaCliente() {
-      Navigator.of(context).pushReplacementNamed('/consultaCliente');
+      Navigator.pushNamed(context, '/consultaCliente');
     }
 
      cadastroCidade() {
@@ -38,16 +38,17 @@ class _HomeState extends State<Home> {
     }
 
     consultaCidade() {
-      Navigator.of(context).pushReplacementNamed('/consultaCidade');
+      Navigator.pushNamed(context, '/consultaCidade');
     }
 
 
     return Scaffold(
-      // appBar: Componentes().criaAppBar("Utilização API", home),
+      appBar: Componentes().criaAppBar("Utilização API", home, Colors.purple),
       body: Form(
         key: formController,
         child: Column(
           children: [
+            SizedBox(height: 20),
             Componentes().criaBotao(formController, cadastroCliente, "Cadastro Pessoa"),
             Componentes().criaBotao(formController, consultaCliente, "Consulta Pessoa"),
             Componentes().criaBotao(formController, consultaCidade, "Consulta Cidade"),

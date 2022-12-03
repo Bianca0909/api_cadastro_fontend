@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class Tema {
   criaTema() {
     return ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.lightBlue[800],
+        brightness: Brightness.light,
         fontFamily: 'Georgia',
         textTheme: const TextTheme(
           headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),

@@ -64,7 +64,7 @@ class AcessoApi {
   }
 
   Future<void> alteraCidade(Map<String, dynamic> cidade, int id) async {
-    String url = "http://localhost:8080/cidade/$id";
+    String url = "http://localhost:8080/cidade?id=$id";
     Map<String, String> headers = {
       "Content-Type": "application/json; charset=UTF-8"
     };

@@ -66,7 +66,6 @@ class _ConsultaState extends State<ConsultaCliente> {
     }
     
     buscarPorCidade() async {
-
       List<Pessoa> pessoas = await AcessoApi().listaPessoasPorCidade(int.parse(txtCidade.text));
       setState(() {
         lista = pessoas;
@@ -74,7 +73,7 @@ class _ConsultaState extends State<ConsultaCliente> {
     }
 
     return Scaffold(
-      appBar: Componentes().criaAppBar("Consulta de clientes", home),
+      appBar: Componentes().criaAppBar("Consulta de clientes", home, Colors.purple),
       body: Form(
         key: formController,
         child: Column(

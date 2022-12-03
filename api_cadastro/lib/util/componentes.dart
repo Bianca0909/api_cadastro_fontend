@@ -3,32 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Componentes {
-  criaAppBar(texto, acao) {
+  criaAppBar(texto, acao, cor) {
     return AppBar(
       title: criaTexto(texto),
       centerTitle: true,
+      backgroundColor: cor,
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.home),
           onPressed: acao,
-        )
+        ),
       ],
     );
   }
-
-  // criaAppBarPesquisa(acao) {
-  //   return AppBar(
-  //       title: Container(
-  //           width: double.infinity,
-  //           height: 40,
-  //           decoration: BoxDecoration(
-  //               color: Color.fromARGB(255, 0, 0, 0),
-  //               borderRadius: BorderRadius.circular(5)),
-  //           child: Center(
-  //             child: TextInput(
-  //             ),
-  //           )));
-  // }
 
   criaTexto(texto, [cor]) {
     if (cor != null) {
@@ -79,11 +66,41 @@ class Componentes {
             padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
             height: 70,
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+              style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10), backgroundColor: Colors.purple, 
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(9.0))),
               onPressed: () {
                 if (controladorFormulario.currentState!.validate()) {
                   funcao();
                 }
+              },
+              child: Text(
+                titulo,
+                style: const TextStyle(color: Colors.white, fontSize: 30.0),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  criaBotaoSemValidacao(funcao, titulo) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+            height: 70,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10), backgroundColor: Colors.purple,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0))),
+              onPressed: () {
+                funcao();
               },
               child: Text(
                 titulo,
